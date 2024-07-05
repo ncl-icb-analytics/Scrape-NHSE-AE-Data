@@ -45,8 +45,8 @@ main.py
 ## The script will:
 
 - Scrape the NHS England website for A&E attendance and emergency admission data.
-- Downloads all available CSV files.
-- Combines the downloaded CSV files into two outputs:
+- Downloads all available CSV files into `data`
+- Combines the downloaded CSV files into `output` as two files:
   - `national_ae_data.csv`: Contains all the combined data.
   - `ncl_ae_data.csv`: Contains filtered data for NCL trusts.
 
