@@ -51,4 +51,4 @@ python scrape_and_combine_ae_data.py
 
 ## License
 
-This repository is dual licensed under the Open Government v3 & MIT. All code can outputs are subject to Crown Copyright.
+This repository is dual licensed under the Open Government v3 & MIT. All code and outputs are subject to Crown Copyright.
