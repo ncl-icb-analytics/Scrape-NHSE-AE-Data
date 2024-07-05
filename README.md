@@ -15,7 +15,6 @@ Before running the script, ensure you have the following Python packages install
 Clone the repository:
 
 ```sh
-
 git clone https://github.com/ncl-icb-analytics/Scrape-NHSE-AE-Data
 cd Scrape-NHSE-AE-Data
 ```
@@ -25,21 +24,21 @@ Set up a virtual environment (optional but recommended):
 ```sh
 
 python -m venv venv
+```
+```sh
 venv\Scripts\activate
 ```
 
 Install the dependencies:
 
 ```sh
-
 pip install -r requirements.txt
 ```
 
 Run the script:
 
 ```sh
-
-    python scrape_and_combine_ae_data.py
+python scrape_and_combine_ae_data.py
 ```
 
 ## The script will:
