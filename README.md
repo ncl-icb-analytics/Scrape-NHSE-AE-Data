@@ -1,6 +1,6 @@
 # Scrape NHSE A&E Data
 
-This project contains a Python script to scrape publically available A&E attendance and emergency admission data from the NHS England website. The script downloads CSV files for specified years, combines them into a single dataset, and saves the output.
+This project contains a Python script to scrape publicly available A&E attendance and emergency admission data from the NHS England website. The script downloads CSV files for specified years, combines them into a single dataset, and saves the output.
 
 ## Prerequisites
 
