@@ -49,3 +49,7 @@ Run the script:
 - Combine the downloaded CSV files into two outputs:
   - `national_ae_data.csv`: Contains all the combined data.
   - `ncl_ae_data.csv`: Contains filtered data for specified local trusts.
+
+## License
+
+This repository is dual licensed under the Open Government v3 & MIT. All code can outputs are subject to Crown Copyright.
