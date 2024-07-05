@@ -25,7 +25,7 @@ Set up a virtual environment (optional but recommended):
 ```sh
 
 python -m venv venv
-source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+venv\Scripts\activate
 ```
 
 Install the dependencies:
