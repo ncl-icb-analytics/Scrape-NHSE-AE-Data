@@ -1,24 +1,54 @@
-# NCL sample project folder
+# Scrape NHSE A&E Data
 
-This git repository contains a shell that should be used as the default structure for new projects
-in the analytical team.  It won't fit all circumstances perfectly, and you can make changes and issue a
-pull request for new features / changes.
+This project contains a Python script to scrape A&E attendance and emergency admission data from the NHS England website. The script downloads CSV files for specified years, combines them into a single dataset, and saves the output.
 
-The aim of this template is two-fold: firstly to give a common structure for analytical projects to aid
-reproducibility, secondly to allow for additional security settings as default to prevent accidental upload of files that should not be committed to Git and GitHub.
+## Prerequisites
 
-__Please update/replace this README file with one relevant to your project__
+Before running the script, ensure you have the following Python packages installed:
 
-## To use this template, please use the following practises:
+- `requests`
+- `beautifulsoup4`
+- `pandas`
 
-* Put any data files in the `data` folder.  This folder is explicitly named in the .gitignore file.  A further layer of security is that all xls, xlsx, csv and pdf files are also explicit ignored in the whole folder as well.  ___If you need to commit one of these files, you must use the `-f` (force) command in `commit`, but you must be sure there is no identifiable data.__
-* Save any documentation in the `docs` file.  This does not mean you should avoid commenting your code, but if you have an operating procedure or supporting documents, add them to this folder.
-* Please save all output: data, formatted tables, graphs etc. in the output folder.  This is also implicitly ignored by git, but you can use the `-f` (force) command in `commit` to add any you wish to publish to github.
+## Usage
 
-### Please also consider the following:
+Clone the repository:
 
-* Linting your code.  This is a formatting process that follows a rule set.  We broadly encourage the tidyverse standard, and recommend the `lintr` package.
-* Comment your code to make sure others can follow.
-* Consider your naming conventions: we recommend `snake case` where spaces are replaced by underscores and no capitals are use. E.g. `outpatient_referral_data`
+```sh
+git clone https://github.com/ncl-icb-analytics/Scrape-NHSE-AE-Data
+cd Scrape-NHSE-AE-Data
+```
 
-This repository is dual licensed under the [Open Government v3]([https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/) & MIT. All code can outputs are subject to Crown Copyright.
+Set up a virtual environment:
+
+```sh
+
+python -m venv venv
+```
+```sh
+venv\Scripts\activate
+```
+
+Install the dependencies:
+
+```sh
+pip install -r requirements.txt
+```
+
+Run the script:
+
+```sh
+main.py
+```
+
+## The script will:
+
+- Scrape the NHS England website for A&E attendance and emergency admission data for the specified years.
+- Download all available CSV files.
+- Combine the downloaded CSV files into two outputs:
+  - `national_ae_data.csv`: Contains all the combined data.
+  - `ncl_ae_data.csv`: Contains filtered data for specified local trusts.
+
+## License
+
+This repository is dual licensed under the Open Government v3 & MIT. All code and outputs are subject to Crown Copyright.
