@@ -19,7 +19,7 @@ git clone https://github.com/ncl-icb-analytics/Scrape-NHSE-AE-Data
 cd Scrape-NHSE-AE-Data
 ```
 
-Set up a virtual environment (optional but recommended):
+Set up a virtual environment:
 
 ```sh
 
