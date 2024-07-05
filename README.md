@@ -48,7 +48,7 @@ main.py
 - Downloads all available CSV files.
 - Combines the downloaded CSV files into two outputs:
   - `national_ae_data.csv`: Contains all the combined data.
-  - `ncl_ae_data.csv`: Contains filtered data for specified local trusts.
+  - `ncl_ae_data.csv`: Contains filtered data for NCL trusts.
 
 ## Column Headers
 
