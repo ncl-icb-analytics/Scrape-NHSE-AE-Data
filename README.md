@@ -38,7 +38,7 @@ pip install -r requirements.txt
 Run the script:
 
 ```sh
-python scrape_and_combine_ae_data.py
+main.py
 ```
 
 ## The script will:
