@@ -3,10 +3,11 @@ import requests
 from bs4 import BeautifulSoup
 import pandas as pd
 from datetime import datetime
+import calendar
 
 # Constants
 BASE_URL = 'https://www.england.nhs.uk/statistics/statistical-work-areas/ae-waiting-times-and-activity/'
-START_YEAR = 2021 # earlier years csv's contain different columns so we start from here
+START_YEAR = 2021
 DATA_DIR = 'data'
 OUTPUT_DIR = 'output'
 NCL_ORG_CODES = ["RP6", "RAP", "RAL", "RAN", "RKE", "RRV"]
@@ -63,6 +64,18 @@ def download_csv(url, data_dir):
         file.write(response.content)
     return filename
 
+def parse_period_to_date(period_str):
+    try:
+        if pd.isna(period_str) or 'TOTAL' in period_str.upper():
+            return None
+        _, month, year = period_str.split('-')
+        month_number = datetime.strptime(month, "%B").month
+        last_day = calendar.monthrange(int(year), month_number)[1]
+        return datetime(int(year), month_number, last_day)
+    except Exception as e:
+        print(f"Failed to parse date from period: {period_str} - {e}")
+        return None
+
 def combine_csvs(data_dir, national_output_file, ncl_output_file, ncl_org_codes):
     all_files = [os.path.join(data_dir, f) for f in os.listdir(data_dir) if f.endswith('.csv')]
     if not all_files:
@@ -70,6 +83,11 @@ def combine_csvs(data_dir, national_output_file, ncl_output_file, ncl_org_codes)
         return
     
     combined_df = pd.concat((pd.read_csv(f) for f in all_files), ignore_index=True)
+
+    # Convert Period to date and sort dataframe
+    combined_df['Period'] = combined_df['Period'].apply(parse_period_to_date)
+    combined_df = combined_df.dropna(subset=['Period']).sort_values(by='Period', ascending=False)
+
     combined_df.to_csv(national_output_file, index=False)
     
     ncl_df = combined_df[combined_df['Org Code'].isin(ncl_org_codes)]
@@ -99,7 +117,6 @@ def main():
     
     print(f"National combined CSV saved to {national_output_file}")
     print(f"NCL combined CSV saved to {ncl_output_file}")
-
 
 # Run the script
 if __name__ == "__main__":
